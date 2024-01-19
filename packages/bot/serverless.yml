@@ -15,7 +15,7 @@ package:
     - "!**"
     - .env
     - package.json
-    - package-lock.json
+    # - package-lock.json
     - dist/*.js
 
 functions:
@@ -42,10 +42,10 @@ functions:
   #           interval: 10
 
 resources:
-  trigger-sa:
-    type: yc::ServiceAccount
-    roles:
-      - serverless.functions.invoker
+  # trigger-sa:
+  #   type: yc::ServiceAccount
+  #   roles:
+  #     - serverless.functions.invoker
   function-sa:
     type: yc::ServiceAccount
     roles:

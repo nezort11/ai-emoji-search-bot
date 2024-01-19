@@ -7,7 +7,8 @@
     "serverless:info": "pnpm serverless info --stage=prod",
     "serverless:purge": "pnpm serverless remove",
     "webhook:set": "./set-webhook.sh",
-    "webhook:remove": "./remove-webhook.sh"
+    "webhook:remove": "./remove-webhook.sh",
+    "release": "pnpm build && pnpm serverless:deploy"
   },
   "dependencies": {
     "axios": "^1.6.2",

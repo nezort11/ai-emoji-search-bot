@@ -15,13 +15,22 @@ bot.on(message("text"), async (context) => {
   await context.sendChatAction("typing");
 
   const emojiText = context.message.text;
-  const emojiesResponse = await axios.post<string>(
+  const emojiesResponse = await axios.get<string[]>(
     "https://emojisearch.fun/api/completion",
     {
-      prompt: emojiText,
+      params: {
+        query: emojiText,
+      },
     }
   );
-  const emojies = emojiesResponse.data;
+  const emojies = emojiesResponse.data.join("");
 
   await context.reply(emojies);
+});
+
+bot.catch(async (error, context) => {
+  console.error(error);
+  await context.reply(
+    `⚠️ Error! Please try again 🔁 or later (✉️ error has been reported).`
+  );
 });
