@@ -3,24 +3,25 @@
   "scripts": {
     "dev": "NODE_ENV=development pnpm nodemon --exec 'pnpm ts-node' ./src/index.ts",
     "build": "pnpm tsc --build",
+    "bot:init": "NODE_ENV=production pnpm ts-node ./src/init.ts",
     "serverless:deploy": "pnpm serverless deploy --stage=prod",
     "serverless:info": "pnpm serverless info --stage=prod",
     "serverless:purge": "pnpm serverless remove",
     "webhook:set": "./set-webhook.sh",
     "webhook:remove": "./remove-webhook.sh",
-    "release": "pnpm build && pnpm serverless:deploy"
+    "release": "pnpm build && pnpm serverless:deploy && pnpm webhook:set"
   },
   "dependencies": {
-    "axios": "^1.6.2",
-    "dotenv": "^16.0.3",
-    "serverless": "^3.16.0",
-    "serverless-http": "^3.1.1",
-    "telegraf": "^4.11.2"
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.4",
+    "serverless": "^3.38.0",
+    "serverless-http": "^3.2.0",
+    "telegraf": "^4.15.3"
   },
   "devDependencies": {
-    "@yandex-cloud/serverless-plugin": "^1.0.2",
-    "nodemon": "^2.0.20",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.5.4"
+    "@yandex-cloud/serverless-plugin": "^1.7.17",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.5"
   }
 }
