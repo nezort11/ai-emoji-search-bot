@@ -1,9 +1,11 @@
-import { Telegraf } from "telegraf";
+import { Composer, Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
 import axios from "axios";
 import { BOT_TOKEN } from "./constants";
 
 export const bot = new Telegraf(BOT_TOKEN);
+
+bot.use(Composer.drop((context) => context.chat?.type !== "private"));
 
 bot.start(async (context) => {
   await context.reply(
